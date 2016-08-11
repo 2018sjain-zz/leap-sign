@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Leap Sign</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+    body {
+        padding-top: 70px;
+        background-image: url("sea.png");
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+        <script>
+			var myDataRef = new Firebase('https://xh6910401us.firebaseio-demo.com/');
+			var myDataRefTwo = new Firebase('https://aql7inf6yqv.firebaseio-demo.com/');
+			
+			myDataRef.on('value', function(snapshot) {
+				var message = snapshot.val();
+				<!--myDataRefTwo.set({"": choice});
+				assignVariables(message.word1, message.word2, message.word3,
+						message.temp, message.cond, message.loc, message.sentence);
+			});
+			function assignVariables(word1, word2, word3, temp, cond, loc, sentence){
+				var first = word1;
+				document.getElementById('1').innerHTML = first;
+				var second = word2;
+				document.getElementById('2').innerHTML = second;
+				var third = word3;
+				document.getElementById('3').innerHTML = third;
+				var sent = sentence;
+				document.getElementById('420').innerHTML = sent;
+
+				document.getElementById('weather').style.display="none";
+				if (temp.localeCompare("false") != 0)
+				{
+					document.getElementById('weather').style.display="block";
+					var temperature = temp;
+					document.getElementById('4').innerHTML = temperature;
+					var condition = cond;
+					document.getElementById('5').innerHTML = condition;
+					var location = loc;
+					document.getElementById('6').innerHTML = location;
+					if (condition.localeCompare("Sky is clear") == 0) {
+						document.getElementById('sun').style.display="block";
+						document.getElementById('rain').style.display="none";
+
+					}
+					else
+					{
+						document.getElementById('rain').style.display="block";
+						document.getElementById('sun').style.display="none";
+					}
+				}				
+			};
+
+			function myFunction1(){
+					var choice = document.getElementById('1').innerHTML;
+					myDataRefTwo.set({choice: choice});
+					reset();
+					<!--$('#messageInput').val('');
+			};
+			function myFunction2(){
+					var choice = document.getElementById('2').innerHTML;
+					myDataRefTwo.set({choice: choice});
+					reset();
+					<!--$('#messageInput').val('');
+			};
+			function myFunction3(){
+					var choice = document.getElementById('3').innerHTML;
+					myDataRefTwo.set({choice: choice});
+					reset();
+					<!--$('#messageInput').val('');
+			};
+
+			function reset(){
+				myDataRef.set({null:null});
+				myDataRefTwo.set({null:null});
+			};
+		</script>
+		
+		<div class = "row">
+				<ul class="list-inline banner-social-buttons text-center">
+					<li>
+						<a href="" class="btn btn-default btn-lg"><i class=""></i> <span class="network-name" id = '1' onclick="myFunction1()"></span></a>
+					</li>
+					<li>
+						<a href="" class="btn btn-default btn-lg"><i class=""></i> <span class="network-name" id = '2' onclick="myFunction2()"></span></a>
+					</li>
+					<li>
+						<a href="" class="btn btn-default btn-lg"><i class=""></i> <span class="network-name" id = '3' onclick="myFunction3()"></span></a>
+					</li>
+				</ul>
+		</div>
+
+		<div class = "row">
+			<br></br>
+		</div>
+		<div id 'sentence' class "col-lg-3 col-lg-offset-1" style="background:orange">
+			<ul class = "text-center">
+				<li>
+					<span class="netword-name"><b>Your Sentence:</b></span>
+					<span id = '420'></span>
+				</li>
+			</ul>
+		</div>
+		<div class = "row">
+			<br></br>
+		</div>
+
+		<div id = 'weather' class = "col-lg-4 col-lg-offset-4" style="background:cyan;">
+			<ul class = "list-inline text-center">
+				<li>
+					<h3>Weather Update</h3>
+					<span class="netword-name">Temperature: </span>
+					<i class = ""></i><span class="netword-name" id = '4' ></span> <!--temp-->
+					<span class="netword-name">F</span>
+					<br></br>
+					<span class="netword-name">Conditions: </span>
+					<i class = ""></i><span class="netword-name" id = '5' ></span> <!--cond-->
+					<br></br>
+					<span class="netword-name">Location: </span>
+					<i class = ""></i><span class="netword-name" id = '6' ></span> <!--loc-->
+					<img src="rain.jpg" id = "rain" style="width:200px;height:120px;">
+					<img src="sun.jpg" id = "sun" style="width:150px;height:150px;">
+
+				</li>
+			</ul>
+		</div>
+
+
+
+
+    <!-- /.container -->
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
